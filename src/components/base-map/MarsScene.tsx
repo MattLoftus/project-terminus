@@ -1,7 +1,8 @@
 import { useMemo, useRef } from 'react';
-import { useLoader, useFrame, useThree } from '@react-three/fiber';
+import { useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
 import { useSimulation } from '../../store/simulation';
+import type { MarsWeatherData } from '../../lib/mars-simulation';
 import { marsJunctions, marsModules } from '../../data/mars-config';
 import { Module3D, ModuleAnimationManager } from './Module3D';
 import { Junction3D } from './Junction3D';
@@ -255,7 +256,7 @@ function DustStormEffects({ sunRef }: { sunRef: React.RefObject<THREE.Directiona
   const { scene } = useThree();
 
   useFrame(() => {
-    const weather = useSimulation.getState().weather;
+    const weather = useSimulation.getState().weather as MarsWeatherData | undefined;
     if (!weather) return;
 
     const intensity = weather.dustStormIntensity;

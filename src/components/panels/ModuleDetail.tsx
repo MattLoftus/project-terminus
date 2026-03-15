@@ -417,7 +417,7 @@ export function ModuleDetail() {
       const marsFac = facilities as unknown as MarsFacilitiesData;
       return <MarsFacilityDetail facilityId={selectedId} onClose={() => setSelectedModule(null)} facilities={marsFac} />;
     }
-    return <FacilityDetail facilityId={selectedId} onClose={() => setSelectedModule(null)} facilities={facilities as FacilitiesData} />;
+    return <FacilityDetail facilityId={selectedId} onClose={() => setSelectedModule(null)} facilities={facilities as unknown as FacilitiesData} />;
   }
 
   // Dome detail — Mars central habitat dome

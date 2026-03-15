@@ -663,7 +663,7 @@ const facilityStatusColors: Record<string, THREE.Color> = {
 export function ISRUPlant3D() {
   const setFocusTarget = useSimulation((s) => s.setFocusTarget);
   const setSelectedModule = useSimulation((s) => s.setSelectedModule);
-  const facilityStatus = useSimulation((s) => 'isru' in s.facilities ? s.facilities.isru.status : 'nominal' as const);
+  const facilityStatus = useSimulation((s) => 'isru' in s.facilities ? (s.facilities as { isru: { status: 'nominal' | 'warning' | 'critical' } }).isru.status : 'nominal' as const);
   const [hovered, setHovered] = useState(false);
   const glowRef = useRef<THREE.Mesh>(null);
 

@@ -184,7 +184,7 @@ const facilityStatusColors: Record<string, THREE.Color> = {
 function SinglePad({ pos, label, hasLander, padIndex }: { pos: [number, number, number]; label: string; hasLander: boolean; padIndex: number }) {
   const setFocusTarget = useSimulation((s) => s.setFocusTarget);
   const setSelectedModule = useSimulation((s) => s.setSelectedModule);
-  const padStatus = useSimulation((s) => 'launchPads' in s.facilities ? s.facilities.launchPads[padIndex]?.status ?? 'nominal' : 'nominal' as const);
+  const padStatus = useSimulation((s) => 'launchPads' in s.facilities ? (s.facilities as { launchPads: { status: 'nominal' | 'warning' | 'critical' }[] }).launchPads[padIndex]?.status ?? 'nominal' : 'nominal' as const);
   const [hovered, setHovered] = useState(false);
   const glowRef = useRef<THREE.Mesh>(null);
 

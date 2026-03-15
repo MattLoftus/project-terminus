@@ -4,7 +4,6 @@ import {
   type Alert,
   type ReactorData,
   drift,
-  gaussianRandom,
   createAlert,
 } from './shared-simulation';
 import { generateCrew, tickCrew } from './crew';

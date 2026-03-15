@@ -2,6 +2,7 @@ import { useMemo, useRef } from 'react';
 import { useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
 import { useSimulation } from '../../store/simulation';
+import type { TitanWeatherData } from '../../lib/titan-simulation';
 import { titanJunctions, titanModules } from '../../data/titan-config';
 import { Module3D, ModuleAnimationManager } from './Module3D';
 import { Junction3D } from './Junction3D';
@@ -259,7 +260,7 @@ function MethaneRain() {
 
   useFrame(({ clock }) => {
     if (!meshRef.current) return;
-    const weather = useSimulation.getState().weather;
+    const weather = useSimulation.getState().weather as TitanWeatherData | undefined;
     if (!weather || !weather.methaneRainActive) {
       for (let i = 0; i < count; i++) {
         dummy.position.set(0, -100, 0);
@@ -373,7 +374,7 @@ function TitanWeatherEffects({ sunRef }: { sunRef: React.RefObject<THREE.Directi
   const { scene } = useThree();
 
   useFrame(() => {
-    const weather = useSimulation.getState().weather;
+    const weather = useSimulation.getState().weather as TitanWeatherData | undefined;
     if (!weather) return;
 
     const fog = scene.fog as THREE.Fog | null;

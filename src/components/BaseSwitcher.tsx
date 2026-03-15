@@ -3,7 +3,6 @@ import { getAllBases } from '../data/base-registry';
 
 export function BaseSwitcher() {
   const baseType = useSimulation((s) => s.baseType);
-  const switchBase = useSimulation((s) => s.switchBase);
   const beginTransition = useSimulation((s) => s.beginTransition);
   const bases = getAllBases();
   const current = bases.find(b => b.type === baseType)!;

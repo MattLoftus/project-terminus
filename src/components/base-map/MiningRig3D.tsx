@@ -4,7 +4,7 @@ import * as THREE from 'three';
 import { useSimulation } from '../../store/simulation';
 
 /** Surface mining rig — drill derrick with rotating bit */
-export function MiningRig3D({ position, rigId }: { position: [number, number, number]; rigId: string }) {
+export function MiningRig3D({ position }: { position: [number, number, number]; rigId: string }) {
   const drillRef = useRef<THREE.Mesh>(null);
   const glowRef = useRef<THREE.Mesh>(null);
 

@@ -1,28 +1,27 @@
 import { useRef, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
+import { Line } from '@react-three/drei';
 import { PlanetStarfield } from './PlanetStarfield';
 import { AtmosphereGlow } from './AtmosphereGlow';
 
 function OrbitLine({ radius, inclination }: { radius: number; inclination: number }) {
-  const geometry = useMemo(() => {
-    const points: THREE.Vector3[] = [];
+  const points = useMemo(() => {
+    const pts: [number, number, number][] = [];
     const segments = 256;
     for (let i = 0; i <= segments; i++) {
       const angle = (i / segments) * Math.PI * 2;
-      points.push(new THREE.Vector3(
+      pts.push([
         radius * Math.cos(angle),
         radius * Math.sin(angle) * Math.sin(inclination),
         radius * Math.sin(angle) * Math.cos(inclination),
-      ));
+      ]);
     }
-    return new THREE.BufferGeometry().setFromPoints(points);
+    return pts;
   }, [radius, inclination]);
 
   return (
-    <line geometry={geometry}>
-      <lineBasicMaterial color="#cc8855" transparent opacity={0.4} />
-    </line>
+    <Line points={points} color="#cc8855" transparent opacity={0.4} lineWidth={1} />
   );
 }
 

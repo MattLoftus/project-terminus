@@ -352,7 +352,7 @@ export function NuclearReactor3D({ position }: { position?: [number, number, num
   const REACTOR_POS = position ?? DEFAULT_POS;
   const setFocusTarget = useSimulation((s) => s.setFocusTarget);
   const setSelectedModule = useSimulation((s) => s.setSelectedModule);
-  const facilityStatus = useSimulation((s) => s.facilities.reactor.status);
+  const facilityStatus = useSimulation((s) => (s.facilities as { reactor: { status: 'nominal' | 'warning' | 'critical' } }).reactor.status);
   const [hovered, setHovered] = useState(false);
   const glowRef = useRef<THREE.Mesh>(null);
   const vesselRef = useRef<THREE.Mesh>(null);

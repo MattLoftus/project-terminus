@@ -94,7 +94,7 @@ function AudioToggle() {
 export function TopBar() {
   const { missionDay, missionTime, atmosphere, power, comms, crew, modules } = useSimulation();
   const isPaused = useSimulation((s) => s.isPaused);
-  const overallStatus = getSystemStatus({ missionDay, missionTime, atmosphere, water: {} as any, power, comms, crew, radiation: {} as any, modules, alerts: [], facilities: {} as any });
+  const overallStatus = getSystemStatus({ missionDay, missionTime, atmosphere, water: {} as any, power, comms, crew, crewRoster: [], radiation: {} as any, modules, alerts: [], facilities: {} as any });
 
   return (
     <div className="h-12 bg-panel/90 flex items-center justify-between px-6 relative topbar-border"

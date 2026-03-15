@@ -1017,7 +1017,6 @@ const geometryMap: Record<string, (props: GeoProps) => ReactNode> = {
   // Phobos-specific modules
   'relay-comms': CommsGeometry,
   'fuel-depot': StorageGeometry,
-  'docking': AirlockGeometry,
 };
 
 // --- Main Module3D component ---
