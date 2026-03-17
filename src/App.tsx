@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import { startSimulation, stopSimulation, restartSimulation, useSimulation } from './store/simulation';
 import { getBaseEntry } from './data/base-registry';
 import { TopBar } from './components/TopBar';
@@ -73,6 +74,7 @@ export default function App() {
       <AlertFeed />
 
       <TransitionOverlay />
+      <Analytics />
     </div>
   );
 }
